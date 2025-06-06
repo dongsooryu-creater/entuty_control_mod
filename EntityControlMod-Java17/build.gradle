@@ -1,20 +1,20 @@
 plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'java'
 }
 
-group = 'com.example'
+group = 'com.yourname.entitycontrolmod'
 version = '1.0.0'
-archivesBaseName = 'EntityControlMod'
-
-java {
-    toolchain.languageVersion = JavaLanguageVersion.of(17)
-}
+archivesBaseName = 'entity-control-mod'
 
 minecraft {
-    mappings channel: 'official', version: '1.20.1'
+    // Forge version for 1.20.1
+    version = "1.20.1-47.1.3"
     runs {
         client {
             workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
             mods {
                 entitycontrolmod {
                     source sourceSets.main
@@ -24,6 +24,26 @@ minecraft {
     }
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        name = 'forge'
+        url = 'https://maven.minecraftforge.net/'
+    }
+}
+
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.1.3'
+    minecraft "net.minecraftforge:forge:1.20.1-47.1.3"
+    implementation 'org.jetbrains:annotations:23.0.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release.set(17)
 }
