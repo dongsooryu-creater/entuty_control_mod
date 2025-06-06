@@ -1,0 +1,29 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+group = 'com.example'
+version = '1.0.0'
+archivesBaseName = 'EntityControlMod'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            mods {
+                entitycontrolmod {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.1.3'
+}
