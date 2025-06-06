@@ -1,8 +1,10 @@
 modLoader="javafml"
-loaderVersion="[47,)"
+loaderVersion="[55,)"
 license="MIT"
 [[mods]]
 modId="entitycontrolmod"
 version="1.0.0"
 displayName="Entity Control Mod"
-description="A simple mod to control entities."
+description='''
+모드 설명을 여기에 적으세요.
+'''
